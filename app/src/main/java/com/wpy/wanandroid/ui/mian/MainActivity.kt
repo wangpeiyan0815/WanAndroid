@@ -6,10 +6,6 @@ import com.wpy.wanandroid.base.fragment.BaseFragment
 import com.wpy.wanandroid.ui.mian.adapter.MainViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
-/**
- * 测试提交
- * 测试上传
- */
 class MainActivity : BaseActivity() {
 
     override fun intiLayoutRes(): Int {
