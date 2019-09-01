@@ -1,4 +1,4 @@
-package com.wpy.wanandroid.ui.mian.adapter
+package com.wpy.wanandroid.ui.main.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
