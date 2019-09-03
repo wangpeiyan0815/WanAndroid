@@ -13,6 +13,7 @@ import com.wpy.wanandroid.ui.mine.MineFragment
 import com.wpy.wanandroid.ui.project.ProjectFragment
 import com.wpy.wanandroid.ui.tree.TreeFragment
 import com.wpy.wanandroid.ui.wxarticle.WxFragment
+import com.wpy.wanandroid.utils.status.StatusBarCompat
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
@@ -43,7 +44,7 @@ class MainActivity : BaseActivity() {
     }
 
     override fun intiView() {
-
+        refreshStatusBar()
         val fragments = arrayListOf<BaseFragment>().apply {
             add(HomeFragment.newInstance())
             add(TreeFragment.newInstance())
@@ -64,6 +65,12 @@ class MainActivity : BaseActivity() {
         tabLayout.setTabData(mTabEntities)
         tabLayout.setOnTabSelectListener(tabSelectListener)
     }
+
+    fun refreshStatusBar() {
+        StatusBarCompat.transparent(this)
+        StatusBarCompat.setIconMode(this, true)
+    }
+
 
     override fun intiLoad() {
 

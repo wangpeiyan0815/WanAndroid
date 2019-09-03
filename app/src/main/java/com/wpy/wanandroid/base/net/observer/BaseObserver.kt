@@ -32,6 +32,9 @@ abstract class BaseObserver<E>(private val showErrorTip: Boolean = true) : Obser
         onError(responseException)
     }
 
+    override fun onComplete() {
+    }
+
     fun getDisposable() = disposable
 
     abstract fun onSuccess(data: E)

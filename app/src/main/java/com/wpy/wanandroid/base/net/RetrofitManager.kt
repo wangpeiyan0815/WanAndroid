@@ -27,9 +27,9 @@ object RetrofitManager {
 
     private fun getOkHttpClient(flag: Boolean): OkHttpClient {
         val buidler = OkHttpClient.Builder().apply {
-            connectTimeout(10, TimeUnit.SECONDS)
-            writeTimeout(10, TimeUnit.SECONDS)
-            readTimeout(10, TimeUnit.SECONDS)
+            connectTimeout(Const.HTTP_TIMEOUT, TimeUnit.SECONDS)
+            writeTimeout(Const.HTTP_TIMEOUT, TimeUnit.SECONDS)
+            readTimeout(Const.HTTP_TIMEOUT, TimeUnit.SECONDS)
 
             if (flag) {
                 val loggingInterceptor = HttpLoggingInterceptor()

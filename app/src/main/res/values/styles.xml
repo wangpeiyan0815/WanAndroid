@@ -11,7 +11,45 @@
             keyboard|keyboardHidden|screenSize|fontScale|density|orientation
         </item>
     </style>
+
     <style name="MyDialog" parent="NiceDialogStyle">
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
+
+    <style name="ActionBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/main</item>
+        <item name="ab_autoImmersion">true</item>
+        <item name="ab_bottomLineHeight">0dp</item>
+        <item name="ab_foregroundLayerLayout">@layout/basic_ui_loading_bar</item>
+        <item name="ab_statusBarColor">@color/transparent</item>
+        <item name="ab_titleBarHeight">@dimen/action_bar_height</item>
+    </style>
+
+    <style name="ActionBar.Common">
+        <item name="abc_titleTextColor">@color/text_white</item>
+        <item name="abc_leftIconColor">@color/white</item>
+        <item name="abc_leftIconPadding">13dp</item>
+        <item name="abc_leftIconMarginLeft">3dp</item>
+        <item name="abc_leftTextColor">@color/white</item>
+        <item name="abc_rightIconColor">@color/white</item>
+        <item name="abc_rightIconPadding">13dp</item>
+        <item name="abc_rightIconMarginRight">3dp</item>
+        <item name="abc_rightTextColor">@color/white</item>
+    </style>
+
+    <style name="ActionBar.Common.Back">
+        <item name="abc_leftIconRes">@drawable/ic_back</item>
+        <item name="abc_leftIconMarginLeft">0dp</item>
+        <item name="abc_leftIconClickToFinish">true</item>
+    </style>
+
+    <style name="basic_ui_LoadingBarH" parent="Widget.MaterialProgressBar.ProgressBar.Horizontal.NoPadding">
+        <item name="android:minHeight">1dp</item>
+        <item name="android:maxHeight">5dp</item>
+    </style>
+
+    <style name="basic_ui_LoadingBarC" parent="Widget.MaterialProgressBar.ProgressBar.NoPadding"></style>
 </resources>

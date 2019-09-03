@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">WanAndroid</string>
+
+    <string name="behavior_sample_title">com.wpy.wanandroid.widget.HomeTitleBehavior</string>
 </resources>
