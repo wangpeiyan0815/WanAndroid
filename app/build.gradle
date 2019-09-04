@@ -55,4 +55,6 @@ dependencies {
     implementation 'me.zhanghai.android.materialprogressbar:library:1.4.2'
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-21'
     implementation 'com.android.support:design:29.0.0'
+    implementation 'com.google.android:flexbox:1.0.0'
+    implementation 'com.just.agentweb:agentweb:4.1.2'
 }
