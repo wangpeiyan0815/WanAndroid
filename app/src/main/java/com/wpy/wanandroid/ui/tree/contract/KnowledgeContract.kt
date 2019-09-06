@@ -1,4 +1,4 @@
-package com.wpy.wanandroid.ui.tree
+package com.wpy.wanandroid.ui.tree.contract
 
 import com.shehuan.wanandroid.base.net.exception.ResponseException
 import com.wpy.wanandroid.base.BaseView

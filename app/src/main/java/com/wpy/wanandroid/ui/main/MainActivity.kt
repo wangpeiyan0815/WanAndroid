@@ -6,13 +6,13 @@ import com.flyco.tablayout.listener.OnTabSelectListener
 import com.wpy.wanandroid.R
 import com.wpy.wanandroid.base.activity.BaseActivity
 import com.wpy.wanandroid.base.fragment.BaseFragment
-import com.wpy.wanandroid.ui.home.HomeFragment
+import com.wpy.wanandroid.ui.home.fragment.HomeFragment
 import com.wpy.wanandroid.ui.main.adapter.MainViewPagerAdapter
 import com.wpy.wanandroid.ui.main.entity.TabEntity
 import com.wpy.wanandroid.ui.mine.MineFragment
 import com.wpy.wanandroid.ui.project.ProjectFragment
 import com.wpy.wanandroid.ui.tree.fragment.TreeFragment
-import com.wpy.wanandroid.ui.wxarticle.WxFragment
+import com.wpy.wanandroid.ui.wxarticle.fragment.WxFragment
 import com.wpy.wanandroid.utils.status.StatusBarCompat
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -58,7 +58,6 @@ class MainActivity : BaseActivity() {
         mainVp.adapter = vpAdapter
         mainVp.offscreenPageLimit = fragments.size
         mainVp.addOnPageChangeListener(pageChangeListene)
-
         for (i in titles.indices) {
             mTabEntities.add(TabEntity(titles[i], mIconSelectIds[i], mIconUnselectIds[i]))
         }
@@ -96,7 +95,7 @@ class MainActivity : BaseActivity() {
         }
 
         override fun onTabSelect(position: Int) {
-            mainVp.currentItem = position
+            mainVp.setCurrentItem(position,false)
         }
     }
 }

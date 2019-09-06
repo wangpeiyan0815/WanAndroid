@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.scwang.smartrefresh.layout.SmartRefreshLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/refreshLayout"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:gravity="center"
-        android:layout_height="match_parent"
-        app:srlEnablePureScrollMode="true">
-
+        android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv"
             android:layout_width="match_parent"
-            android:scrollbars="vertical"
-            android:overScrollMode="ifContentScrolls"
-            android:scrollbarSize="5dp"
-            android:scrollbarThumbVertical="@color/text_main"
-            android:layout_height="match_parent">
-    </androidx.recyclerview.widget.RecyclerView>
+            android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
 
 </com.scwang.smartrefresh.layout.SmartRefreshLayout>

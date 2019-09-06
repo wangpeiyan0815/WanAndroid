@@ -1,4 +1,4 @@
-package com.wpy.wanandroid.ui.home
+package com.wpy.wanandroid.ui.home.contract
 
 import com.shehuan.wanandroid.base.net.exception.ResponseException
 import com.wpy.wanandroid.base.BaseView

@@ -1,4 +1,4 @@
-package com.wpy.wanandroid.ui.home
+package com.wpy.wanandroid.ui.home.fragment
 
 import android.animation.ObjectAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,13 +24,16 @@ import com.youth.banner.loader.ImageLoader
 import android.view.animation.LinearInterpolator
 import android.animation.PropertyValuesHolder
 import com.chad.library.adapter.base.BaseQuickAdapter
+import com.wpy.wanandroid.ui.home.contract.HomeContract
+import com.wpy.wanandroid.ui.home.presenter.HomePresenterImpl
 
 
 /**
  *   使用ConstraintLayout 等控件因Mainacti
  */
 
-class HomeFragment : BaseMvpFragment<HomePresenterImpl>(), HomeContract.View {
+class HomeFragment : BaseMvpFragment<HomePresenterImpl>(),
+    HomeContract.View {
 
     private var pageNum = 0
     private lateinit var mArticleListAdapter: ArticleListAdapter
@@ -96,6 +99,7 @@ class HomeFragment : BaseMvpFragment<HomePresenterImpl>(), HomeContract.View {
     override fun initLoad() {
         presenter.getArticleList(pageNum)
         presenter.getBannerData()
+
     }
 
     override fun initPresenter(): HomePresenterImpl {

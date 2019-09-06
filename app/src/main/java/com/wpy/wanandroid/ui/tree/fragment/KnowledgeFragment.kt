@@ -1,20 +1,18 @@
 package com.wpy.wanandroid.ui.tree.fragment
 
-import android.util.Log
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.shehuan.wanandroid.base.net.exception.ResponseException
 import com.wpy.wanandroid.R
 import com.wpy.wanandroid.base.fragment.BaseMvpFragment
-import com.wpy.wanandroid.ui.tree.KnowledgeContract
-import com.wpy.wanandroid.ui.tree.KnowledgePresenter
+import com.wpy.wanandroid.ui.tree.contract.KnowledgeContract
+import com.wpy.wanandroid.ui.tree.presenter.KnowledgePresenterImpl
 import com.wpy.wanandroid.ui.tree.adapter.KnowledgeRvAdapter
 import com.wpy.wanandroid.ui.tree.bean.KnowledgeBean
 import com.wpy.wanandroid.utils.ToastUtil
 import kotlinx.android.synthetic.main.fragment_knowledge.*
 
-class KnowledgeFragment : BaseMvpFragment<KnowledgePresenter>(), KnowledgeContract.View {
+class KnowledgeFragment : BaseMvpFragment<KnowledgePresenterImpl>(), KnowledgeContract.View {
 
     private lateinit var mAdapter: KnowledgeRvAdapter
 
@@ -48,8 +46,8 @@ class KnowledgeFragment : BaseMvpFragment<KnowledgePresenter>(), KnowledgeContra
         presenter.getKnowledgeList()
     }
 
-    override fun initPresenter(): KnowledgePresenter {
-        return KnowledgePresenter(this)
+    override fun initPresenter(): KnowledgePresenterImpl {
+        return KnowledgePresenterImpl(this)
     }
 
     override fun onKnowledgeListSuccess(data: List<KnowledgeBean>) {

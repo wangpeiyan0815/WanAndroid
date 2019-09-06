@@ -38,5 +38,6 @@ class TreeFragment : BaseFragment() {
     }
 
     override fun initLoad() {
+
     }
 }
