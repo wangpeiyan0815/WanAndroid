@@ -72,11 +72,7 @@ class WxArticleFragment : BaseMvpFragment<WxArticlePresenterImpl>(), WxArticleCo
     }
 
     override fun onWxArticleListSuccess(data: WxArticleBean) {
-        if (currPage == PAGE_START) {
-            mAdapter.setNewData(data.datas)
-        } else {
-            mAdapter.addData(data.datas)
-        }
+        if (currPage == PAGE_START) mAdapter.setNewData(data.datas) else mAdapter.addData(data.datas)
         currPage++
         if (data.over) {
             mAdapter.loadMoreEnd()
