@@ -13,7 +13,6 @@ import com.wpy.wanandroid.ui.wxarticle.presenter.WxArticlePresenterImpl
 import com.wpy.wanandroid.utils.SmartRefreshUtils
 import kotlinx.android.synthetic.main.fragment_wx_article.*
 
-
 class WxArticleFragment : BaseMvpFragment<WxArticlePresenterImpl>(), WxArticleContract.View {
 
     private lateinit var mAdapter: WxArticleAdapter
