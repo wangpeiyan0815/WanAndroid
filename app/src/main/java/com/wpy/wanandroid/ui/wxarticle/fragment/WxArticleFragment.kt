@@ -38,8 +38,7 @@ class WxArticleFragment : BaseMvpFragment<WxArticlePresenterImpl>(), WxArticleCo
         return R.layout.fragment_wx_article
     }
 
-    override fun initData() {
-    }
+    override fun initData() {}
 
     override fun initView() {
         rv.layoutManager = LinearLayoutManager(activity)
