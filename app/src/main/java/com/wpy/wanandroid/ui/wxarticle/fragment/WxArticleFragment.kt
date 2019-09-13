@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.shehuan.wanandroid.base.net.exception.ResponseException
 import com.wpy.wanandroid.R
 import com.wpy.wanandroid.base.fragment.BaseMvpFragment
+
 import com.wpy.wanandroid.ui.wxarticle.adapter.WxArticleAdapter
 import com.wpy.wanandroid.ui.wxarticle.bean.WxArticleBean
 import com.wpy.wanandroid.ui.wxarticle.contract.WxArticleContract
