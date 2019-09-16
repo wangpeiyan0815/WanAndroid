@@ -24,8 +24,10 @@ import com.youth.banner.loader.ImageLoader
 import android.view.animation.LinearInterpolator
 import android.animation.PropertyValuesHolder
 import com.chad.library.adapter.base.BaseQuickAdapter
+import com.wpy.wanandroid.ui.home.bean.DatasItem
 import com.wpy.wanandroid.ui.home.contract.HomeContract
 import com.wpy.wanandroid.ui.home.presenter.HomePresenterImpl
+import com.wpy.wanandroid.ui.main.activity.WebActivity
 
 
 /**
@@ -86,7 +88,8 @@ class HomeFragment : BaseMvpFragment<HomePresenterImpl>(),
         }
 
         mArticleListAdapter.onItemClickListener = BaseQuickAdapter.OnItemClickListener { adapter, view, position ->
-
+            val datas = adapter.data as List<DatasItem>
+            WebActivity.start(activity!!, datas[position].id, datas[position].title, datas[position].link)
         }
     }
 

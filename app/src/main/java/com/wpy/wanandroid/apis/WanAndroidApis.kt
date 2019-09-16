@@ -3,6 +3,8 @@ package com.wpy.wanandroid.apis
 import com.wpy.wanandroid.base.BaseResponse
 import com.wpy.wanandroid.ui.home.bean.ArticleBean
 import com.wpy.wanandroid.ui.home.bean.BannerBean
+import com.wpy.wanandroid.ui.project.bean.ProjectArticleBean
+import com.wpy.wanandroid.ui.project.bean.ProjectChapterBean
 import com.wpy.wanandroid.ui.tree.bean.KnowledgeBean
 import com.wpy.wanandroid.ui.tree.bean.NaviBean
 import com.wpy.wanandroid.ui.wxarticle.bean.WxArticleBean
@@ -10,6 +12,7 @@ import com.wpy.wanandroid.ui.wxarticle.bean.WxChapterBean
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface WanAndroidApis {
 
@@ -56,4 +59,25 @@ interface WanAndroidApis {
         @Path("id") id: Int,
         @Path("page") page: Int
     ): Observable<BaseResponse<WxArticleBean>>
+
+
+    /**
+     * 项目分类
+     * 方法： GET
+     */
+    @GET("project/tree/json")
+    fun getProjectChapters(): Observable<BaseResponse<List<ProjectChapterBean>>>
+
+    /**
+     * 项目列表数据
+     * 方法：GET
+     * 参数：
+     * cid 分类的id，上面项目分类接口
+     * 页码：拼接在链接中，从1开始。
+     */
+    @GET("project/list/{page}/json")
+    fun getProjectArticleList(
+        @Path("page") page: Int,
+        @Query("cid") id: Int
+    ): Observable<BaseResponse<ProjectArticleBean>>
 }

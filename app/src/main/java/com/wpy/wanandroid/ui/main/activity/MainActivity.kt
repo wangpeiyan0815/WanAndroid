@@ -1,4 +1,4 @@
-package com.wpy.wanandroid.ui.main
+package com.wpy.wanandroid.ui.main.activity
 
 import androidx.viewpager.widget.ViewPager
 import com.flyco.tablayout.listener.CustomTabEntity
@@ -10,10 +10,9 @@ import com.wpy.wanandroid.ui.home.fragment.HomeFragment
 import com.wpy.wanandroid.ui.main.adapter.MainViewPagerAdapter
 import com.wpy.wanandroid.ui.main.entity.TabEntity
 import com.wpy.wanandroid.ui.mine.MineFragment
-import com.wpy.wanandroid.ui.project.ProjectFragment
+import com.wpy.wanandroid.ui.project.fragment.ProjectFragment
 import com.wpy.wanandroid.ui.tree.fragment.TreeFragment
 import com.wpy.wanandroid.ui.wxarticle.fragment.WxFragment
-import com.wpy.wanandroid.utils.status.StatusBarCompat
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
@@ -36,14 +35,14 @@ class MainActivity : BaseActivity() {
         R.drawable.ic_mine_selected
     )
 
-    override fun intiLayoutRes(): Int {
+    override fun initLayoutRes(): Int {
         return R.layout.activity_main
     }
 
-    override fun intiData() {
+    override fun initData() {
     }
 
-    override fun intiView() {
+    override fun initView() {
         refreshStatusBar()
         val fragments = arrayListOf<BaseFragment>().apply {
             add(HomeFragment.newInstance())
@@ -65,13 +64,7 @@ class MainActivity : BaseActivity() {
         tabLayout.setOnTabSelectListener(tabSelectListener)
     }
 
-    fun refreshStatusBar() {
-        StatusBarCompat.transparent(this)
-        StatusBarCompat.setIconMode(this, true)
-    }
-
-
-    override fun intiLoad() {
+    override fun initLoad() {
 
     }
 
