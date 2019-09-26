@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
+    <per.goweii.actionbarex.common.ActionBarSuper
+            android:id="@+id/abs"
+            style="@style/ActionBar"
+            app:absuper_left1Icon="@drawable/ic_back"
+            app:absuper_left1IconPadding="13dp"
+            app:absuper_left2Icon="@drawable/ic_close"
+            app:absuper_left2IconClickToFinish="true"
+            app:absuper_left2IconPadding="13dp"
+            app:absuper_right1Icon="@drawable/ic_more"
+            app:absuper_right1IconMarginRight="3dp"
+            app:absuper_right1IconPadding="13dp"
+            app:absuper_titleTextColor="@color/text_white"
+            app:absuper_titleTextMaxWidth="200dp"/>
+
+
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:srlEnablePureScrollMode="true">
 
         <FrameLayout
                 android:id="@+id/web_container"

@@ -1,6 +1,5 @@
 package com.wpy.wanandroid.ui.main.activity
 
-import android.app.PendingIntent.getActivity
 import android.content.Context
 import android.content.Intent
 import android.widget.FrameLayout
@@ -9,7 +8,8 @@ import com.wpy.wanandroid.base.activity.BaseActivity
 import kotlinx.android.synthetic.main.activity_web.*
 import android.view.KeyEvent
 import com.just.agentweb.DefaultWebClient
-import com.wpy.wanandroid.R
+import android.webkit.WebView
+import com.just.agentweb.WebChromeClient
 
 
 class WebActivity : BaseActivity() {
@@ -50,18 +50,36 @@ class WebActivity : BaseActivity() {
 
     override fun initView() {
         refreshStatusBar()
+        abs.titleTextView.text = mTitle
+        abs.leftActionViews[0].setOnClickListener {
+            if (!mAgentWeb.back()) {
+                finish()
+            }
+        }
+
+        abs.rightActionViews[0].setOnClickListener {
+
+        }
 
         mAgentWeb = AgentWeb.with(this)
             .setAgentWebParent(web_container, FrameLayout.LayoutParams(-1, -1))
             .useDefaultIndicator(-1, 3)
-//            .setAgentWebWebSettings(getSettings())
+            .setWebChromeClient(mWebChromeClient)
             .setSecurityType(AgentWeb.SecurityType.STRICT_CHECK)
-            .setMainFrameErrorView(R.layout.agentweb_error_page, -1)
+            .setMainFrameErrorView(com.wpy.wanandroid.R.layout.agentweb_error_page, -1)
             .setOpenOtherPageWays(DefaultWebClient.OpenOtherPageWays.DISALLOW)
             .interceptUnkownUrl()
             .createAgentWeb()
             .ready()
             .go(mUrl)
+    }
+
+    private val mWebChromeClient = object : WebChromeClient() {
+        override fun onReceivedTitle(view: WebView, title: String) {
+            super.onReceivedTitle(view, title)
+            mCurrTitle = title
+            abs.titleTextView?.text = mCurrTitle
+        }
     }
 
     override fun initLoad() {
