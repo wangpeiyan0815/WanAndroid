@@ -3,6 +3,7 @@ package com.wpy.wanandroid.apis
 import com.wpy.wanandroid.base.BaseResponse
 import com.wpy.wanandroid.ui.home.bean.ArticleBean
 import com.wpy.wanandroid.ui.home.bean.BannerBean
+import com.wpy.wanandroid.ui.home.bean.HotKeyBean
 import com.wpy.wanandroid.ui.project.bean.ProjectArticleBean
 import com.wpy.wanandroid.ui.project.bean.ProjectChapterBean
 import com.wpy.wanandroid.ui.tree.bean.KnowledgeBean
@@ -80,4 +81,11 @@ interface WanAndroidApis {
         @Path("page") page: Int,
         @Query("cid") id: Int
     ): Observable<BaseResponse<ProjectArticleBean>>
+
+
+    /**
+     * 搜索热词
+     */
+    @GET("hotkey/json")
+    fun getHotKeyList(): Observable<BaseResponse<List<HotKeyBean>>>
 }

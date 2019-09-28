@@ -24,6 +24,7 @@ import com.youth.banner.loader.ImageLoader
 import android.view.animation.LinearInterpolator
 import android.animation.PropertyValuesHolder
 import com.chad.library.adapter.base.BaseQuickAdapter
+import com.wpy.wanandroid.ui.home.activity.SearchActivity
 import com.wpy.wanandroid.ui.home.bean.DatasItem
 import com.wpy.wanandroid.ui.home.contract.HomeContract
 import com.wpy.wanandroid.ui.home.presenter.HomePresenterImpl
@@ -37,7 +38,7 @@ import com.wpy.wanandroid.ui.main.activity.WebActivity
 class HomeFragment : BaseMvpFragment<HomePresenterImpl>(),
     HomeContract.View {
 
-    private var pageNum = 0
+    private var currPage = PAGE_START
     private lateinit var mArticleListAdapter: ArticleListAdapter
     private lateinit var mBannerBeans: List<BannerBean>
     private lateinit var mSmartRefreshUtils: SmartRefreshUtils
@@ -45,6 +46,8 @@ class HomeFragment : BaseMvpFragment<HomePresenterImpl>(),
     private var mScaleAnimator: ObjectAnimator? = null
 
     companion object {
+        const val PAGE_START = 1
+
         fun newInstance() = HomeFragment()
     }
 
@@ -83,13 +86,22 @@ class HomeFragment : BaseMvpFragment<HomePresenterImpl>(),
         })
 
         floatingBtn.setOnClickListener {
-            if (!isSearch)
-                scrollToTop()
+            if (!isSearch) scrollToTop() else openSearch()
         }
 
         mArticleListAdapter.onItemClickListener = BaseQuickAdapter.OnItemClickListener { adapter, view, position ->
             val datas = adapter.data as List<DatasItem>
             WebActivity.start(activity!!, datas[position].id, datas[position].title, datas[position].link)
+        }
+
+        mSmartRefreshUtils.setRefreshListener {
+            currPage = PAGE_START
+            getArticleList()
+        }
+
+        mSmartRefreshUtils.setLoadMoreListener {
+            currPage++
+            getArticleList()
         }
     }
 
@@ -100,9 +112,12 @@ class HomeFragment : BaseMvpFragment<HomePresenterImpl>(),
     }
 
     override fun initLoad() {
-        presenter.getArticleList(pageNum)
         presenter.getBannerData()
+        getArticleList()
+    }
 
+    fun getArticleList() {
+        presenter.getArticleList(currPage)
     }
 
     override fun initPresenter(): HomePresenterImpl {
@@ -137,10 +152,19 @@ class HomeFragment : BaseMvpFragment<HomePresenterImpl>(),
 
     override fun onArticleListSuccess(data: ArticleBean) {
         val datas = data.datas
-        mArticleListAdapter.setNewData(datas)
+        if (currPage == PAGE_START) {
+            mArticleListAdapter.setNewData(datas)
+        } else {
+            mArticleListAdapter.addData(datas)
+        }
+        if (data.over) {
+            mArticleListAdapter.loadMoreEnd()
+        }
+        mSmartRefreshUtils.success()
     }
 
     override fun onArticleListError(e: ResponseException) {
+        mSmartRefreshUtils.fail()
     }
 
     fun createBanner() {
@@ -188,5 +212,9 @@ class HomeFragment : BaseMvpFragment<HomePresenterImpl>(),
         app_bar.setExpanded(true)
         home_rv.stopScroll()
         home_rv.scrollToPosition(0)
+    }
+
+    private fun openSearch() {
+        SearchActivity.start(mContext)
     }
 }

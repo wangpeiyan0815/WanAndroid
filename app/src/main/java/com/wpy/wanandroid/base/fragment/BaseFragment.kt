@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.wpy.wanandroid.base.activity.BaseActivity
 
-abstract class BaseFragment : Fragment(){
+abstract class BaseFragment : Fragment() {
 
     protected val TAG: String = this.javaClass.simpleName
 
@@ -153,6 +153,13 @@ abstract class BaseFragment : Fragment(){
             isDataLoaded = true
             dispatchParentHiddenState()
         }
+    }
+
+    /**
+     *  在不使用ViewPager嵌套下设置  是否对用户可见
+     */
+    protected fun isViewPagerPattern(pattern: Boolean) {
+        isVisibleToUser = !pattern
     }
 
     override fun onDestroy() {

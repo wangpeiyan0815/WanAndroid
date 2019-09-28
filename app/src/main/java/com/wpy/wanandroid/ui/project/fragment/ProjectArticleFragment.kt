@@ -70,7 +70,10 @@ class ProjectArticleFragment : BaseMvpFragment<ProjectArticlePresenterImpl>(), P
     }
 
     override fun ontProjectArticleListSuccess(data: ProjectArticleBean) {
-        if (currPage == WxArticleFragment.PAGE_START) mAdapter.setNewData(data.datas) else mAdapter.addData(data.datas)
+        if (currPage == WxArticleFragment.PAGE_START)
+            mAdapter.setNewData(data.datas)
+        else
+            mAdapter.addData(data.datas)
         currPage++
         if (data.over) {
             mAdapter.loadMoreEnd()
