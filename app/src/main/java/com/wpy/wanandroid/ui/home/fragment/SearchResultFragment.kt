@@ -25,4 +25,8 @@ class SearchResultFragment : BaseFragment(){
 
     override fun initLoad() {
     }
+
+    public fun search(key:String){
+
+    }
 }

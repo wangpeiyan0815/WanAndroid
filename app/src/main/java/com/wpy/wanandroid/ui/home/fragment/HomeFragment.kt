@@ -29,6 +29,7 @@ import com.wpy.wanandroid.ui.home.bean.DatasItem
 import com.wpy.wanandroid.ui.home.contract.HomeContract
 import com.wpy.wanandroid.ui.home.presenter.HomePresenterImpl
 import com.wpy.wanandroid.ui.main.activity.WebActivity
+import com.wpy.wanandroid.utils.LogUtils
 
 
 /**
@@ -64,7 +65,7 @@ class HomeFragment : BaseMvpFragment<HomePresenterImpl>(),
         mSmartRefreshUtils.pureScrollMode()
         mSmartRefreshUtils.setRefreshListener {}
         mArticleListAdapter = ArticleListAdapter(null)
-        home_rv.layoutManager = LinearLayoutManager(activity)
+        home_rv.layoutManager = LinearLayoutManager(mContext)
         home_rv.adapter = mArticleListAdapter
         initToolBar()
         createBanner()
@@ -161,6 +162,7 @@ class HomeFragment : BaseMvpFragment<HomePresenterImpl>(),
             mArticleListAdapter.loadMoreEnd()
         }
         mSmartRefreshUtils.success()
+        LogUtils.i("TAG",data)
     }
 
     override fun onArticleListError(e: ResponseException) {

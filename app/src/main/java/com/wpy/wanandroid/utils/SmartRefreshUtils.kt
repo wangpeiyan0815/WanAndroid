@@ -1,7 +1,7 @@
 package com.wpy.wanandroid.utils
 
 import com.scwang.smartrefresh.layout.api.RefreshLayout
-import com.wpy.wanandroid.base.Const
+import com.wpy.wanandroid.base.Constant
 
 /**
  *  刷新辅助类
@@ -32,7 +32,7 @@ class SmartRefreshUtils(val mRefreshLayout: RefreshLayout) {
             mRefreshLayout.setEnablePureScrollMode(false)
             mRefreshLayout.setEnableRefresh(true)
             mRefreshLayout.setOnRefreshListener { refreshLayout ->
-                refreshLayout.finishRefresh(Const.REFRESH_TIMEOUT, false)
+                refreshLayout.finishRefresh(Constant.REFRESH_TIMEOUT, false)
                 this.onRefresh()
             }
         }

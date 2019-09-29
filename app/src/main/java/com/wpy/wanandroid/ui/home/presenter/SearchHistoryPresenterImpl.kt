@@ -8,6 +8,7 @@ import com.wpy.wanandroid.base.net.RetrofitManager
 import com.wpy.wanandroid.base.net.observer.BaseObserver
 import com.wpy.wanandroid.ui.home.bean.HotKeyBean
 import com.wpy.wanandroid.ui.home.contract.SearchHistoryContract
+import com.wpy.wanandroid.utils.SearchHistoryUtils
 
 class SearchHistoryPresenterImpl(view: SearchHistoryContract.View) : BasePresenter<SearchHistoryContract.View>(view),
     SearchHistoryContract.Presenter {
@@ -26,5 +27,13 @@ class SearchHistoryPresenterImpl(view: SearchHistoryContract.View) : BasePresent
                     view.onHotKeyListError(e)
                 }
             })
+    }
+
+    fun getHistoryList(): List<String>? {
+        return SearchHistoryUtils.get()
+    }
+
+    fun saveHistory(historys: List<String>) {
+        SearchHistoryUtils.save(historys)
     }
 }

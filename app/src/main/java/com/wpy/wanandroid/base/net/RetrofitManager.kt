@@ -2,7 +2,8 @@ package com.wpy.wanandroid.base.net
 
 import com.shehuan.wanandroid.base.net.interceptor.AddCookiesInterceptor
 import com.shehuan.wanandroid.base.net.interceptor.SaveCookiesInterceptor
-import com.wpy.wanandroid.base.Const
+import com.wpy.wanandroid.base.Constant
+import com.wpy.wanandroid.base.net.interceptor.NetLogInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -21,7 +22,7 @@ object RetrofitManager {
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .baseUrl(Const.WAN_ANDROID_URL)
+            .baseUrl(Constant.WAN_ANDROID_URL)
             .build()
 
         return retrofit.create(service)
@@ -29,16 +30,15 @@ object RetrofitManager {
 
     private fun getOkHttpClient(flag: Boolean): OkHttpClient {
         val buidler = OkHttpClient.Builder().apply {
-            connectTimeout(Const.HTTP_TIMEOUT, TimeUnit.SECONDS)
-            writeTimeout(Const.HTTP_TIMEOUT, TimeUnit.SECONDS)
-            readTimeout(Const.HTTP_TIMEOUT, TimeUnit.SECONDS)
-
-            if (flag) {
-                val loggingInterceptor = HttpLoggingInterceptor()
-                loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-                addInterceptor(loggingInterceptor)
-            }
-
+            connectTimeout(Constant.HTTP_TIMEOUT, TimeUnit.SECONDS)
+            writeTimeout(Constant.HTTP_TIMEOUT, TimeUnit.SECONDS)
+            readTimeout(Constant.HTTP_TIMEOUT, TimeUnit.SECONDS)
+//            if (flag) {
+//                val loggingInterceptor = HttpLoggingInterceptor()
+//                loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+//                addInterceptor(loggingInterceptor)
+//            }
+            addInterceptor(NetLogInterceptor(flag))//设置网络日志
             // 请求相应拦截器
             addInterceptor(SaveCookiesInterceptor())
             addInterceptor(AddCookiesInterceptor())

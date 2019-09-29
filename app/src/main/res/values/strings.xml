@@ -2,4 +2,7 @@
     <string name="app_name">WanAndroid</string>
 
     <string name="behavior_sample_title">com.wpy.wanandroid.widget.HomeTitleBehavior</string>
+    <string name="no_request_body">无请求体</string>
+    <string name="no_request_header">无请求头</string>
+    <string name="no_response_header">无响应头</string>
 </resources>

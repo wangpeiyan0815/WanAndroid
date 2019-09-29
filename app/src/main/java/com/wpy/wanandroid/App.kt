@@ -1,14 +1,15 @@
 package com.wpy.wanandroid
 
 import android.app.Application
-import android.content.Context
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
-import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator
-import com.scwang.smartrefresh.layout.api.RefreshHeader
-import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
 import org.litepal.LitePal
+import com.orhanobut.logger.AndroidLogAdapter
+import com.orhanobut.logger.Logger.addLogAdapter
+import com.wpy.wanandroid.utils.LogUtils
+import leakcanary.LeakCanary
+
 
 class App : Application() {
 
@@ -31,6 +32,9 @@ class App : Application() {
         super.onCreate()
         instance = this
         LitePal.initialize(this)
+        // 初始化日志打印框架
+        addLogAdapter(AndroidLogAdapter())
+        LogUtils.init(this)
     }
 
     companion object {
